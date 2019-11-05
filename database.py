@@ -20,7 +20,7 @@ def insertdata(temp, hum):
 def printdb():
           con = lite.connect('sensorData.db')
           cur = con.cursor()
-          cur.execute("SELECT * FROM DHT_data")
+          cur.execute("SELECT * FROM DHT_data ORDER BY rowid DESC")
           records = cur.fetchmany(2)
           for row in records:
                     
@@ -29,4 +29,4 @@ def printdb():
           con.close()
 
 #insertdata(con,1,1)
-#printdb()
+#printdb()\
