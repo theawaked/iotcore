@@ -29,3 +29,5 @@ def main():
                     sleep(20)
 
 main()
+
+## kijken of crontab nog nuttig is.
