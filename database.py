@@ -20,5 +20,5 @@ def printdb():
           for row in cur.execute("SELECT * FROM DHT_data"):
                     print (row)   
 
-insertdata(con,1,1)
-printdb()
+#insertdata(con,1,1)
+#printdb()
