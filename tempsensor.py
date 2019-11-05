@@ -17,7 +17,7 @@ while True:
     humidity  = bme280_data.humidity
     pressure  = bme280_data.pressure
     
-    print(humidity, pressure, ambient_temperature)
+    print(humidity, pressure, temperature)
     database.insertdata(temperature, humidity)
     database.printdb
     sleep(1)
