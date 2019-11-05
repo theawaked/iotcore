@@ -1,8 +1,8 @@
-import config as config
-import RPi.GPIO as GPIO
-from Adafruit_BME280 import *
+# import config as config
+# import RPi.GPIO as GPIO
+# from Adafruit_BME280 import *
 
-sensor = BME280(address = config.I2C_ADDRESS)
+# sensor = BME280(address = config.I2C_ADDRESS)
 
 # while True:
 #           temperature = sensor.read_temperature()
