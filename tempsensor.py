@@ -19,5 +19,5 @@ while True:
     
     print(humidity, pressure, temperature)
     database.insertdata(temperature, humidity)
-    database.printdb
+    database.printdb()
     sleep(20)
