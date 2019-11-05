@@ -13,6 +13,8 @@
 #           time.sleep(config.MESSAGE_TIMESPAN / 1000.0)
 
 
+
+#import Adafruit_BME280 as bme280
 import bme280
 import smbus2
 from time import sleep
@@ -29,4 +31,4 @@ while True:
     pressure  = bme280_data.pressure
     ambient_temperature = bme280_data.temperature
     print(humidity, pressure, ambient_temperature)
-    sleep(1)
+    sleep(1)\
