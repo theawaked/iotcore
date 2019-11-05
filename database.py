@@ -1,9 +1,8 @@
 import sqlite3 as lite
 import sys
 con = lite.connect('sensorData.db')
+cur = con.cursor() 
 
-with con: 
-    cur = con.cursor() 
     #cur.execute("DROP TABLE IF EXISTS DHT_data")
     #cur.execute("CREATE TABLE DHT_data(timestamp DATETIME, temp NUMERIC, hum NUMERIC)")
 
@@ -11,7 +10,7 @@ with con:
 #     cur.execute("INSERT INTO DHT_data VALUES(datetime('now'), 25.8, 40)")
 #     cur.execute("INSERT INTO DHT_data VALUES(datetime('now'), 30.3, 50)")
 
-def insertdata(con,temp, hum):
+def insertdata(temp, hum):
           cur.execute("INSERT INTO DHT_data values(datetime('now'),(?), (?))", (temp, hum))
           con.commit()
 
