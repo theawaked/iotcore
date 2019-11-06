@@ -15,10 +15,12 @@ import database
 #client =mqtt.Client(client_name)
 
 #connecten met broker(webserver)
-#client.connect(host, port=1883, keepalive=60, bind_address="")
+# broker="192.168.1.184"
+# port=1883
+#client.connect(broker, port)
 
 # Aanpassen naar temp e humidity
-# client.publish("house/light","ON")
+# client.publish("topic","ON")
 
 port = 1
 address = 0x76 # Adafruit BME280 address. Other BME280s may be different

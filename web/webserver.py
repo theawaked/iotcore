@@ -2,7 +2,14 @@ from flask import Flask, render_template, request
 app = Flask(__name__)
 import sqlite3
 
-#import paho.mqtt.client as mqtt
+# import paho.mqtt.client as paho
+# broker="192.168.1.184"
+# port=1883
+
+# client1= paho.Client("control1")   #create client object
+# client1.on_publish = on_message    #assign function to callback
+# client1.connect(broker,port)       #establish connection
+# ret= client1.publish("house/bulb1","on") 
 
 # Retrieve data from database
 def getData():
@@ -33,3 +40,4 @@ def on_message(client, userdata, message):
     print("message topic=",message.topic)
     print("message qos=",message.qos)
     print("message retain flag=",message.retain)
+    #hier zooi voor updaten flask html?
