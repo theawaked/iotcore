@@ -34,10 +34,3 @@ def index():
 if __name__ == "__main__":
    app.run(host='0.0.0.0', port=80, debug=True)
 
-#callback voor mqtt
-def on_message(client, userdata, message):
-    print("message received " ,str(message.payload.decode("utf-8")))
-    print("message topic=",message.topic)
-    print("message qos=",message.qos)
-    print("message retain flag=",message.retain)
-    #hier zooi voor updaten flask html?
