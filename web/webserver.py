@@ -1,29 +1,36 @@
+import MQTT
+import eventlet
 from flask import Flask, render_template, request
+from flask_mqtt import Mqtt
+from flask_socketio import SocketIO
+
+eventlet.monkey_patch()
 
 app = Flask(__name__)
-import sqlite3
-
-from flask import Flask
-from flask_mqtt import Mqtt
-
-app.config['MQTT_BROKER_URL'] = '192.168.1.178'  #homeip
+app.config['MQTT_BROKER_URL'] = '192.168.178.80'  # use the free broker from HIVEMQ
 app.config['MQTT_BROKER_PORT'] = 1883  # default port for non-tls connection
 # app.config['MQTT_USERNAME'] = ''  # set the username here if you need authentication for the broker
 # app.config['MQTT_PASSWORD'] = ''  # set the password here if the broker demands authentication
 # app.config['MQTT_KEEPALIVE'] = 5  # set the time interval for sending a ping to the broker to 5 seconds
-app.config['MQTT_TLS_ENABLED'] = False  # set TLS to disabled for testing purposes
+# app.config['MQTT_TLS_ENABLED'] = False  # set TLS to disabled for testing purposes
 
-mqtt = Mqtt()
+mqtt = Mqtt(app)
+socketio = SocketIO(app)
 
 
-# import paho.mqtt.client as paho
-# broker="192.168.1.184"
-# port=1883
+@mqtt.on_connect()
+def handle_connect(client, userdata, flags, rc):
+    mqtt.subscribe('esp32_gerben')
 
-# client1= paho.Client("control1")   #create client object
-# client1.on_publish = on_message    #assign function to callback
-# client1.connect(broker,port)       #establish connection
-# ret= client1.publish("house/bulb1","on") 
+@mqtt.on_message()
+def handle_mqtt_message(client, userdata, message):
+    data = dict( topic=message.topic,payload=message.payload.decode())
+    print(message.payload)
+        
+
+import sqlite3
+
+
 
 # Retrieve data from database
 def getData():
